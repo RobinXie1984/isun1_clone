@@ -1,0 +1,145 @@
+{
+  "_Icon-jpk45vUa.js": {
+    "file": "_next/static/chunks/Icon-jpk45vUa.js",
+    "name": "Icon",
+    "imports": [
+      "_rolldown-runtime-hePW80VL.js",
+      "_framework-DTZGTDtF.js"
+    ]
+  },
+  "_createLucideIcon-C0Hk8rLa.js": {
+    "file": "_next/static/chunks/createLucideIcon-C0Hk8rLa.js",
+    "name": "createLucideIcon",
+    "imports": [
+      "_rolldown-runtime-hePW80VL.js",
+      "_framework-DTZGTDtF.js",
+      "_Icon-jpk45vUa.js"
+    ]
+  },
+  "_framework-DTZGTDtF.js": {
+    "file": "_next/static/chunks/framework-DTZGTDtF.js",
+    "name": "framework",
+    "imports": [
+      "_rolldown-runtime-hePW80VL.js"
+    ]
+  },
+  "_language-menu--5D7PNa8.js": {
+    "file": "_next/static/chunks/language-menu--5D7PNa8.js",
+    "name": "language-menu",
+    "imports": [
+      "_rolldown-runtime-hePW80VL.js",
+      "_framework-DTZGTDtF.js"
+    ]
+  },
+  "_rolldown-runtime-hePW80VL.js": {
+    "file": "_next/static/chunks/rolldown-runtime-hePW80VL.js",
+    "name": "rolldown-runtime"
+  },
+  "_site-header-BLbLhCl6.js": {
+    "file": "_next/static/chunks/site-header-BLbLhCl6.js",
+    "name": "site-header",
+    "imports": [
+      "_framework-DTZGTDtF.js",
+      "_createLucideIcon-C0Hk8rLa.js",
+      "_language-menu--5D7PNa8.js"
+    ]
+  },
+  "_vinext-N458u6Ez.js": {
+    "file": "_next/static/chunks/vinext-N458u6Ez.js",
+    "name": "vinext",
+    "imports": [
+      "_rolldown-runtime-hePW80VL.js",
+      "_framework-DTZGTDtF.js"
+    ],
+    "dynamicImports": [
+      "_vinext-N458u6Ez.js"
+    ]
+  },
+  "app/programme.tsx": {
+    "file": "_next/static/chunks/programme-BWn28tKE.js",
+    "name": "programme",
+    "src": "app/programme.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-hePW80VL.js",
+      "_framework-DTZGTDtF.js",
+      "_vinext-N458u6Ez.js",
+      "_site-header-BLbLhCl6.js"
+    ]
+  },
+  "app/search.tsx": {
+    "file": "_next/static/chunks/search-D07vTgjR.js",
+    "name": "search",
+    "src": "app/search.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-hePW80VL.js",
+      "_framework-DTZGTDtF.js",
+      "_site-header-BLbLhCl6.js"
+    ]
+  },
+  "components/contact-form.tsx": {
+    "file": "_next/static/chunks/contact-form-ChTa1qO5.js",
+    "name": "contact-form",
+    "src": "components/contact-form.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-hePW80VL.js",
+      "_framework-DTZGTDtF.js"
+    ]
+  },
+  "components/global-gallery.tsx": {
+    "file": "_next/static/chunks/global-gallery-C7RP2kFm.js",
+    "name": "global-gallery",
+    "src": "components/global-gallery.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-hePW80VL.js",
+      "_framework-DTZGTDtF.js",
+      "_createLucideIcon-C0Hk8rLa.js"
+    ]
+  },
+  "components/static-verify.tsx": {
+    "file": "_next/static/chunks/static-verify-bHxk1fem.js",
+    "name": "static-verify",
+    "src": "components/static-verify.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-hePW80VL.js",
+      "_framework-DTZGTDtF.js"
+    ]
+  },
+  "node_modules/vinext/dist/shims/layout-segment-context.js": {
+    "file": "_next/static/chunks/layout-segment-context-DfbAoFuV.js",
+    "name": "layout-segment-context",
+    "src": "node_modules/vinext/dist/shims/layout-segment-context.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_rolldown-runtime-hePW80VL.js",
+      "_framework-DTZGTDtF.js",
+      "_vinext-N458u6Ez.js"
+    ]
+  },
+  "virtual:vinext-app-browser-entry": {
+    "file": "_next/static/chunks/index-CDwZzH1V.js",
+    "name": "index",
+    "src": "virtual:vinext-app-browser-entry",
+    "isEntry": true,
+    "imports": [
+      "_rolldown-runtime-hePW80VL.js",
+      "_framework-DTZGTDtF.js",
+      "_vinext-N458u6Ez.js"
+    ],
+    "dynamicImports": [
+      "_vinext-N458u6Ez.js",
+      "node_modules/vinext/dist/shims/layout-segment-context.js",
+      "components/global-gallery.tsx",
+      "_Icon-jpk45vUa.js",
+      "app/programme.tsx",
+      "components/static-verify.tsx",
+      "_language-menu--5D7PNa8.js",
+      "app/search.tsx",
+      "components/contact-form.tsx"
+    ]
+  }
+}
