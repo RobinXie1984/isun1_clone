@@ -8,7 +8,7 @@ import { publicOrigin } from '../lib/site-config.json';
 export default function sitemap(): MetadataRoute.Sitemap {
   const paths = ['programmes'];
   for (const programme of programmes) {
-    const pages = Math.max(
+    const pages = process.env.ISUN_STATIC_EXPORT === '1' ? 1 : Math.max(
       1,
       Math.ceil(programmeVideos(programme.slug).length / 24),
     );

@@ -1,4 +1,5 @@
 import { globalContent } from './global-content';
+import { sitePath } from './catalogue';
 import type { Metadata } from 'next';
 import { translator } from './brand-i18n';
 export const brandLocales = ['zh-Hans', 'zh-Hant', 'en', 'fr', 'es', 'ja', 'hi', 'he'] as const;
@@ -75,7 +76,7 @@ export const pageDescriptions: Record<string, [string, string]> = {
   ]
 };
 export function brandPath(path: string, locale: BrandLocale) {
-  return `${locale === 'zh-Hans' ? '' : '/' + locale}/${path}`.replace(/\/$/, '') || '/';
+  return sitePath(locale, path);
 }
 export function brandMetadata(
   path: string,

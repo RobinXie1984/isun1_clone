@@ -1,3 +1,4 @@
+import { locales as staticLocales } from '../../../lib/catalogue';
 import { checkedLocale } from '../../../lib/metadata';
 import { BrandContent } from '../../brand-content';
 import { brandMetadata } from '../../../lib/brand-pages';
@@ -10,7 +11,7 @@ export default async function Page({
   searchParams: Promise<{ id?: string }>;
 }) {
   const locale = checkedLocale((await params).locale);
-  const q = await searchParams;
+  const q = process.env.ISUN_STATIC_EXPORT === '1' ? {} as Awaited<typeof searchParams> : await searchParams;
   return (
     <BrandContent
       path="contact"
@@ -19,3 +20,5 @@ export default async function Page({
     />
   );
 }
+
+export function generateStaticParams() { return staticLocales.filter(locale => locale !== 'zh-Hans').map(locale => ({ locale })); }

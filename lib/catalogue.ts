@@ -278,6 +278,7 @@ export function sitePath(locale: Locale, path = '') {
   const boundary = joined.search(/[?#]/);
   const pathname = boundary < 0 ? joined : joined.slice(0, boundary);
   const suffix = boundary < 0 ? '' : joined.slice(boundary);
-  return (pathname.replace(/\/+$/, '') || '/') + suffix;
+  const normalized = pathname.replace(/\/+$/, '') || '/';
+  return normalized + (process.env.ISUN_STATIC_EXPORT === '1' && normalized !== '/' ? '/' : '') + suffix;
 }
 export const homePath = (locale: Locale) => sitePath(locale);

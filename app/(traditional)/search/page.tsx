@@ -7,7 +7,7 @@ type Props = {
 };
 export default async function Page({ params, searchParams }: Props) {
   const p = await params;
-  const q = await searchParams;
+  const q = process.env.ISUN_STATIC_EXPORT === '1' ? {} as Awaited<typeof searchParams> : await searchParams;
   const locale = p.locale ? checkedLocale(p.locale) : 'zh-Hans';
   return <SearchPage locale={locale} query={q.q} pageRaw={q.page} />;
 }

@@ -1,3 +1,4 @@
+import { playlists } from '../../../../lib/collection';
 import { videoMetadata } from '../../../../lib/metadata';
 import { Video } from '../../../video';
 import { type Locale, locales } from '../../../../lib/catalogue';
@@ -21,3 +22,5 @@ export async function generateMetadata({
   const p = await params;
   return videoMetadata('zh-Hans', p.id);
 }
+
+export function generateStaticParams() { return [...new Set(playlists.flatMap(p => p.entries.map(v => v.id)))].map(id => ({ id })); }

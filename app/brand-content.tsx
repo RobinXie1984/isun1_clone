@@ -7,6 +7,7 @@ import { env } from 'cloudflare:workers';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { BrandShell } from '../components/brand-shell';
 import { ContactForm } from '../components/contact-form';
+import { StaticVerify } from '../components/static-verify';
 import { brandPath, pageTitles, type BrandLocale } from '../lib/brand-pages';
 import { entityIds, jsonLd } from '../lib/brand-identity';
 import registry from '../lib/authorization-registry.json';
@@ -302,7 +303,7 @@ export function BrandContent({
       {path === 'verify' ? (
         <section className="page-content">
           <h2>{t('輸入授權編號', 'Enter an authorization ID')}</h2>
-          <form className="verify-form" method="get" action={url('verify')}>
+          {process.env.ISUN_STATIC_EXPORT === '1' ? <StaticVerify locale={locale} /> : <><form className="verify-form" method="get" action={url('verify')}>
             <label className="sr-only" htmlFor="authorization-id">
               {t('授權編號', 'Authorization ID')}
             </label>
@@ -318,7 +319,7 @@ export function BrandContent({
               {t('查驗', 'Verify')}
             </button>
           </form>
-          <VerificationResult id={id} locale={locale} />
+          <VerificationResult id={id} locale={locale} /></>}
           <div className="notice">
             {!registry.published && (
               <p>

@@ -45,6 +45,7 @@ export default defineConfig(async () => {
   process.env.MINIFLARE_REGISTRY_PATH ??= '.wrangler/registry';
 
   // Wrangler snapshots its log path while the Cloudflare plugin is imported.
+  const staticExport = process.env.ISUN_STATIC_EXPORT === '1';
   const { cloudflare } = await import('@cloudflare/vite-plugin');
 
   const hash = createHash('sha256');
@@ -58,7 +59,8 @@ export default defineConfig(async () => {
   for (const dir of ['app', 'components', 'lib', 'public']) visit(dir);
   for (const file of ['worker.ts', 'middleware.ts', 'next.config.ts', 'package-lock.json', 'vite.config.ts']) hash.update(readFileSync(file));
   return {
-    define: { __ISUN_RELEASE__: JSON.stringify(hash.digest('hex').slice(0, 20)) },
+    define: { __ISUN_RELEASE__: JSON.stringify(hash.digest('hex').slice(0, 20)), 'process.env.ISUN_STATIC_EXPORT': JSON.stringify(staticExport ? '1' : '0') },
+    resolve: staticExport ? { alias: { 'cloudflare:workers': join(process.cwd(), 'lib/static-runtime.ts') } } : {},
     css: { postcss: { plugins: [tailwindcss()] } },
     server: {
       host: '0.0.0.0',
@@ -69,11 +71,10 @@ export default defineConfig(async () => {
     },
     plugins: [
       vinext(),
-      sites(),
-      cloudflare({
+      ...(staticExport ? [] : [sites(), cloudflare({
         viteEnvironment: { name: 'rsc', childEnvironments: ['ssr'] },
         config: localBindingConfig,
-      }),
+      })]),
     ],
   };
 });

@@ -47,3 +47,11 @@ Catalogue thumbnails are cached under `public/thumbnails` and mapped by `lib/thu
 ## Release checks
 
 Run `node scripts/check-clone.mjs`, `node scripts/test-authority.mjs`, `node scripts/test-google-relay.mjs`, `node scripts/test-public-cache.mjs`, `npx tsc --noEmit`, and the installed Sites build helper in the Studio checkout. The registry check deliberately fails when its approved-source digest changes; reconcile the canonical registry before updating that digest. No private licensing signing key belongs in this repository.
+
+## Standalone hosting candidate
+
+`npm run build:static` generates a server-independent edition in `dist/client`. It preserves server-rendered content and uses browser-side search and pagination. `python3 scripts/check-static.py dist/client` checks every HTML language/canonical and local link/asset target. The build also scans the complete public artifact for the forbidden old domain and private keys, emits robots/sitemap from the same content source, and refuses a populated authorization registry until current verification is integrated.
+
+The static contact page currently offers a clearly labelled direct-email fallback; it does not accept or falsely acknowledge submissions. A server-side mail relay is required before enabling the form. Never place relay credentials in static HTML or JavaScript.
+
+The GitHub Pages acceptance hostname is being prepared independently of the current production route. Preview artifacts have noindex metadata and disallow crawling; production artifacts must retain their generated public robots and sitemap. Deploy only the verified artifact and preserve the previous release. Do not serve the private legacy ZIP, source evidence folders, server bundles, environment files or credentials.
