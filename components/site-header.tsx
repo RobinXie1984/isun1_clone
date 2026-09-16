@@ -1,0 +1,57 @@
+import { LanguageMenu } from './language-menu';
+import { Search } from 'lucide-react';
+import { searchCopy } from '../lib/search-copy';
+/* oxlint-disable nextjs/no-img-element -- Fixed-size source thumbnails and the small official logo use direct images; no image proxy or optimizer is needed. */
+import {
+  copy,
+  homePath,
+  sitePath,
+  type Locale,
+} from '../lib/catalogue';
+export function SiteHeader({
+  locale,
+  path = '',
+}: {
+  locale: Locale;
+  path?: string;
+}) {
+  const t = copy[locale];
+  const aboutShort = {
+    'zh-Hant': '關於',
+    'zh-Hans': '关于',
+    en: 'About', fr: 'À propos', es: 'Nosotros', hi: 'परिचय',
+    ja: '紹介',
+    he: 'אודות',
+  }[locale];
+  return (
+    <>
+      <a className="skip" href="#main">
+        {t.skip}
+      </a>
+      <header className="masthead">
+        <a href={homePath(locale)} className="brand" aria-label={t.title}>
+          <img
+            src="/isuntv-logo.png"
+            width="200"
+            height="100"
+            alt="iSunTV 陽光衛視"
+          />
+        </a>
+        <nav className="main-nav" aria-label={t.nav}>
+          <a href={sitePath(locale, 'programmes')}>{t.nav}</a>
+          <a href={sitePath(locale, 'about')} aria-label={t.about}>
+            {aboutShort}
+          </a>
+          <a
+            className="nav-search"
+            href={sitePath(locale, 'search')}
+            aria-label={searchCopy[locale].title}
+          >
+            <Search size={20} />
+          </a>
+        </nav>
+        <LanguageMenu locale={locale} path={path} />
+      </header>
+    </>
+  );
+}

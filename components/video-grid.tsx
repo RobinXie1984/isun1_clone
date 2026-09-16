@@ -1,0 +1,55 @@
+/* oxlint-disable nextjs/no-img-element -- Dimensioned source thumbnails, no image proxy. */
+import { ArrowUpRight } from 'lucide-react';
+import { type Locale } from '../lib/catalogue';
+import { detailCopy } from '../lib/editorial';
+import { videoTitle } from '../lib/titles';
+import { videoPath, type ListedVideo } from '../lib/collection';
+export function VideoGrid({
+  locale,
+  videos,
+  priorityFirstImage = false,
+}: {
+  locale: Locale;
+  videos: ListedVideo[];
+  priorityFirstImage?: boolean;
+}) {
+  const t = detailCopy[locale];
+  return (
+    <div className="video-grid">
+      {videos.map((v, index) => (
+        <article className="video-card" key={`${v.playlistId}-${v.id}`}>
+          <a
+            href={videoPath(locale, v.id)}
+            className="video-image"
+            aria-label={videoTitle(v, locale)}
+          >
+            <img
+              src={v.thumbnail ?? undefined}
+              width="480"
+              height="270"
+              loading={priorityFirstImage && index === 0 ? 'eager' : 'lazy'}
+              fetchPriority={priorityFirstImage && index === 0 ? 'high' : undefined}
+              alt=""
+            />
+            {v.durationLabel ? (
+              <span className="duration">{v.durationLabel}</span>
+            ) : null}
+          </a>
+          <p className="episode-index">
+            {String(v.playlist_index).padStart(2, '0')}
+          </p>
+          <h2>
+            <a href={videoPath(locale, v.id)}>{videoTitle(v, locale)}</a>
+          </h2>
+          <a
+            className="video-watch"
+            href={`https://www.youtube.com/watch?v=${v.id}&list=${v.playlistId}`}
+          >
+            {t.watch}
+            <ArrowUpRight size={15} />
+          </a>
+        </article>
+      ))}
+    </div>
+  );
+}

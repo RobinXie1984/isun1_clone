@@ -1,0 +1,43 @@
+export const searchCopy = {
+"fr": {"title": "Rechercher une vidéo", "label": "Titre original, personne ou programme", "submit": "Rechercher", "empty": "Saisissez un mot-clé pour explorer la collection iSunTV.", "none": "Aucune vidéo trouvée. Essayez un autre mot-clé ou le titre original.", "results": "vidéos trouvées", "hint": "Les titres des vidéos sont conservés dans leur langue d’origine. Recherchez un titre, une personne ou un programme."},
+"es": {"title": "Buscar vídeos", "label": "Título original, persona o programa", "submit": "Buscar", "empty": "Introduzca una palabra clave para explorar la colección de iSunTV.", "none": "No hay coincidencias. Pruebe otra palabra clave o el título original.", "results": "vídeos encontrados", "hint": "Los títulos se conservan en su idioma original. Busque por título, persona o programa."},
+"hi": {"title": "वीडियो खोजें", "label": "मूल शीर्षक, व्यक्ति या कार्यक्रम", "submit": "खोजें", "empty": "iSunTV संग्रह में खोजने के लिए कोई शब्द लिखें।", "none": "कोई वीडियो नहीं मिला। कोई दूसरा शब्द या मूल शीर्षक आज़माएँ।", "results": "वीडियो मिले", "hint": "वीडियो के शीर्षक मूल भाषा में रखे गए हैं। शीर्षक, व्यक्ति या कार्यक्रम के नाम से खोजें।"},
+
+ he: {"title": "חיפוש סרטונים", "label": "כותרת מקורית, דמות או שם תוכנית", "submit": "חיפוש", "empty": "הזינו מילת חיפוש כדי לגלות את אוסף iSunTV.", "none": "לא נמצאו סרטונים מתאימים. נסו מילת חיפוש אחרת או את הכותרת המקורית.", "results": "סרטונים מתאימים", "hint": "כותרות הסרטונים נשמרות בשפת המקור. ניתן לחפש לפי כותרת, דמות או תוכנית."},
+  'zh-Hant': {
+    title: '搜尋影片',
+    label: '原片標題、人物或節目名稱',
+    submit: '搜尋',
+    empty: '請輸入關鍵字，搜尋陽光衛視節目典藏。',
+    none: '未找到符合的影片，請嘗試其他關鍵字或原片標題。',
+    results: '部符合的影片',
+    hint: '影片標題保留原文；可使用片名、人物或節目名稱搜尋。',
+  },
+  'zh-Hans': {
+    title: '搜索影片',
+    label: '原片标题、人物或节目名称',
+    submit: '搜索',
+    empty: '请输入关键词，搜索阳光卫视节目典藏。',
+    none: '未找到符合的影片，请尝试其他关键词或原片标题。',
+    results: '部符合的影片',
+    hint: '影片标题保留原文；可使用片名、人物或节目名称搜索。',
+  },
+  en: {
+    title: 'Search videos',
+    label: 'Original title, person or programme',
+    submit: 'Search',
+    empty: 'Enter a keyword to explore the iSunTV collection.',
+    none: 'No matching videos. Try another keyword or the original video title.',
+    results: 'matching videos',
+    hint: 'Video titles retain their original language. Search by title, person or programme.',
+  },
+  ja: {
+    title: '動画を検索',
+    label: '原題・人物・番組名',
+    submit: '検索',
+    empty: 'キーワードを入力して、陽光衛視の作品を探す。',
+    none: '一致する動画がありません。別のキーワードや原題で検索してください。',
+    results: '件の動画',
+    hint: '動画タイトルは原文表記です。原題・人物・番組名で検索できます。',
+  },
+};
