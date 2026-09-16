@@ -1,6 +1,6 @@
 # iSun1 · 阳光卫视
 
-The independent, eight-language iSun1 media site is live at **https://isun1.com/**. Release date: 16 September 2026, ahead of the 18 September Taipei deadline. Production validation is recorded in `PROJECT_STATE.md`; DNS propagation and mail-form delivery are still being followed through; both search engines have successfully read the sitemap. A published page is not a promise of universal Mainland connectivity or search-engine indexing.
+The independent, eight-language iSun1 media site is live at **https://isun1.com/**. Release date: 16 September 2026, ahead of the 18 September Taipei deadline. Production validation is recorded in `PROJECT_STATE.md`; the online enquiry form is live and verified in Safari and Chrome, and both search engines have successfully read the sitemap. Some recursive DNS caches and probe nodes still have recorded failures. A published page is not a promise of universal Mainland connectivity or search-engine indexing.
 
 ## Ownership and locations
 
@@ -12,7 +12,7 @@ Robin Xie owns product intent and approval. Codex/Maimai owns execution and veri
 - `main`: editable application source and operational documentation. A push to main does **not** publish a new site.
 - `gh-pages`: verified static public artifact; pushing this branch triggers GitHub Pages deployment.
 - Source baseline: approved iSunTV version 36, commit `e55756bcd25bbe6beb8c453b4282288929502f7c`. Original source and deployment were not changed.
-- Current application source: `3c6d2e47362ab9148e322567676d58a847fe3a2c`. Initial production artifact: `04268009` on gh-pages; resolve the full revision before rollback.
+- Current application source: `f14c0fa`. Current public artifact: `af4cb9c247d9a4cb2d1939020a727c8517a577c2` on gh-pages. Previous known-good media artifact: `04268009c4b5ab8ca269997fe83846dc5ded3d75`; resolve revisions before rollback.
 
 ## Verified archive
 
@@ -51,12 +51,12 @@ Sites media v1 is retained as a fallback at https://isun1-suntv.robin10.chatgpt.
 
 ## Release verification
 
-- 10,962 generated HTML pages; 23,314 static files before production CNAME; 398,361,240 bytes.
+- 10,962 generated HTML pages; 23,314 static files before production CNAME; 398,361,330 bytes.
 - Every HTML language/canonical checked; 14,305 distinct local link and asset targets, zero missing targets.
 - Complete public-text artifact scan rejects the original media domain, private keys and AppleDouble files.
-- 112 GitHub preview routes passed locale, canonical and noindex checks. The same 112 production routes and 42 sampled assets matched the verified artifact byte-for-byte over strictly verified TLS.
-- Eight 320-pixel mobile homepages passed overflow and visible-image checks; Hebrew RTL verified. Global carousel controls, search, programme pagination and unpublished authorization lookup were exercised in a browser.
-- Mainland preview testing through `http.ping.pro` returned 55 HTTP200 results across 65 probes, including China Telecom, China Unicom and China Mobile; ten DNS failures remained. Initial production test showed cached former-host addresses at some nodes. Timestamped results and limitations are in local `evidence/`; this is sampled access evidence, not an all-network guarantee.
+- 112 GitHub preview routes passed locale, canonical and noindex checks. The current release matched 112 production routes and all 17 generated JavaScript/CSS assets byte-for-byte over normal DNS and strictly verified TLS (129/129).
+- Eight 320-pixel mobile homepages and all eight live contact pages passed overflow and visible-image checks; Hebrew RTL and enabled forms verified. Global carousel controls, search, programme pagination and unpublished authorization lookup were exercised in a browser.
+- Mainland preview testing through `http.ping.pro` returned 55 HTTP200 results across 65 probes, including China Telecom, China Unicom and China Mobile; ten DNS failures remained. Latest production /global/ test: 50/65 HTTP200; one403 still used a former Sites IP, thirteen DNS failures, one unresolved/timeout. The separate enquiry endpoint passed 57/65, including all three major carriers; eight DNS failures remained. Timestamped results and limitations are in local `evidence/`; this is sampled access evidence, not an all-network guarantee.
 - Google sitewide removal is canceled. Google and Bing both report sitemap Success with 832 discovered URLs; Bing has zero active URL blocks. Google live inspection of `/robin/` reported “URL is available to Google” and “Page can be indexed”. Submission and eligibility do not guarantee indexing or ranking.
 
 ## Build and deploy a maintenance release
@@ -88,7 +88,7 @@ After publishing, confirm GitHub Pages build success, HTTPS enforcement, apex200
 
 Prefer restoring a known-good **media** artifact in a new gh-pages commit while keeping `CNAME`, mail DNS and the domain claim intact. Use the previous commit's complete public tree, not just HTML, because asset hashes and RSC payloads must match. Verify production before calling rollback complete.
 
-The first good static production artifact is `04268009`. For a host-wide GitHub incident, Sites media v1 is a global fallback with known Mainland limitations. Restoring it requires apex A `162.159.143.30` and `172.66.3.26`, www CNAME `custom-domains.chatgpt.site`, active existing custom domains and strict HTTPS checks. The corresponding verification TXT records were retained. Do not remove mail records or change nameservers.
+The immediate pre-form rollback artifact is `04268009c4b5ab8ca269997fe83846dc5ded3d75`; it restores the explicit direct-email fallback without automated submission. For a host-wide GitHub incident, Sites media v1 is a global fallback with known Mainland limitations. Restoring it requires apex A `162.159.143.30` and `172.66.3.26`, www CNAME `custom-domains.chatgpt.site`, active existing custom domains and strict HTTPS checks. The corresponding verification TXT records were retained. Do not remove mail records or change nameservers.
 
 Legacy restoration is an emergency-only separate decision: recover the archived repository and its earlier DNS/configuration, retain noindex, and document why. Never reindex retired financial-business pages accidentally. A rollback does not authorize deleting the private archive.
 
@@ -104,12 +104,18 @@ The approved authorization registry is **unpublished with zero records**, SHA-25
 
 ## Contact and future technical work
 
-The current contact route provides a clear direct-email path to `admin@tideisun.com`. Its online form is disabled and never falsely confirms delivery. Restoring automated submissions requires existing admin mail-relay access plus a server-side endpoint accessible from Mainland China. Secrets must remain server-side; never place them in static JavaScript. The Safari admin session is presently blocked by the locked iMac; an unlock request is already pending.
+The online form is live in all eight languages. GitHub Pages stays static; form submissions go to the dedicated Cloudflare Worker `isun1-enquiry`, at `https://isun1-enquiry.isunmedia.com/contact`, in the existing Tidenet Ltd. account. Only the new `isun1-enquiry` subdomain was attached to the existing media zone; its root site, mail DNS and other records were not changed. The original media domain is not a browser dependency. The worker's default `workers.dev` URL failed Mainland DNS probes and is not used by the public form.
+
+The worker uses the existing approved Google Workspace send-only relay, with the same fixed recipient and permissions. `RELAY_SECRET` is an encrypted Cloudflare binding, never a static asset, source value, archive copy or log. Signed requests retain timestamp/nonce protection and the relay's shared budget of 3 enquiries per visitor per 15 minutes and 100 per day across both sites. The per-isolate burst guard is only supplementary. Inputs are bounded and validated; CORS permits only the apex and www site origins; uncertain delivery is never retried automatically. The form has a 20-second timeout and only shows success after a valid HTTP202 provider confirmation. Direct email to `admin@tideisun.com` remains available on failures.
+
+Acceptance: Safari and Chrome submitted the live form successfully; exact test markers and references were found in the admin account's Sent-mail view and the fixed recipient was checked. This verifies provider acceptance and sent-mail recording, not Inbox-label placement. Four bounded acceptance messages were sent; a subsequent direct request returned HTTP429. Twenty-five worker checks and the existing relay's signature/replay/limit fixtures passed. No new OAuth, inbox permission, paid plan or automated daemon was added.
+
+Maintenance: `mail-worker/index.mjs` and `mail-worker/wrangler.jsonc` preserve the deployed implementation. Verify the Tidenet account ID before any deployment; do not assume a locally logged-in Wrangler account is the correct one. The current version was deployed through the existing Cloudflare dashboard session (active version prefix `ea75be42`). For an emergency pause, set this worker's `ENABLED` variable to `false`; the UI will offer direct email on rejection. To remove the form entirely, roll back the static artifact above. Preserve the shared Google relay because the original site also uses it. Credential rotation or broader permissions require their own authority.
 
 Technical follow-up, in priority order:
 
 1. Finish DNS-propagation checks; both search engines have now read the sitemap successfully. Monitor actual crawl/indexing outcomes without confusing discovery with ranking.
-2. Complete the authorized relay when existing admin access is available, test delivery and rejection/rate limits, then enable the form. Direct email remains available meanwhile.
+2. Review real enquiry volume, rate-limit events and mailbox handling; investigate a changed delivery result before retrying a message or widening permissions.
 3. Before any public authorization records exist, integrate current signed verification/revocation and maintain one approved registry across editions.
 4. Add source-backed episode summaries in the remaining languages only after reviewing source material; re-enable indexing per completed page.
 5. Assess rights-cleared, Mainland-accessible video hosting after the legacy video backup is secured. This needs storage/rights decisions, not an invented mirror.
