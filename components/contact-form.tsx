@@ -8,10 +8,12 @@ export function ContactForm({
   locale = 'zh-Hans',
   labels,
   enabled = false,
+  endpoint = '/api/contact',
 }: {
   locale?: BrandLocale;
   labels: Record<string, string>;
   enabled?: boolean;
+  endpoint?: string;
 }) {
   const t = (_zh: string, en: string) => labels[en] ?? en;
   const [state, setState] = useState<'idle' | 'sending' | 'success' | 'error'>(
@@ -23,7 +25,7 @@ export function ContactForm({
     <form
       className="brand-form"
       method="post"
-      action="/api/contact"
+      action={endpoint}
       onSubmit={async (e) => {
         e.preventDefault();
         if (!enabled || !ready || state === 'sending') return;
@@ -31,12 +33,15 @@ export function ContactForm({
         const form = e.currentTarget;
         const fields = Object.fromEntries(new FormData(form));
         try {
-          const response = await fetch('/api/contact', {
+          const response = await fetch(endpoint, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(fields),
+            signal: AbortSignal.timeout(20000),
           });
-          if (!response.ok) throw new Error('delivery');
+          if (response.status !== 202) throw new Error('delivery');
+          const result = await response.json() as { message?: unknown } | null;
+          if (result?.message !== 'Accepted for delivery') throw new Error('delivery');
           setState('success');
           setMessage(
             t('查詢已獲郵件服務接收，我們會透過電郵回覆。', 'Your enquiry has been accepted for delivery. We will reply by email.'),

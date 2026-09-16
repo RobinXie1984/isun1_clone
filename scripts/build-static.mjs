@@ -58,4 +58,4 @@ function inspect(folder) {
 }
 inspect(root);
 writeFileSync(join(root, '.nojekyll'), '');
-console.log(JSON.stringify({ staticExport: true, htmlCount, bytes, registry: 'unpublished-empty', form: 'disabled-mailto-fallback' }));
+console.log(JSON.stringify({ staticExport: true, htmlCount, bytes, registry: 'unpublished-empty', form: 'dedicated-enquiry-worker-with-mailto-fallback' }));

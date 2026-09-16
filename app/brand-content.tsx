@@ -27,9 +27,9 @@ export function BrandContent({
 }) {
   const mailConfig = env as unknown as Record<string, string | undefined>;
   const mailEnabled =
-    mailConfig.CONTACT_FORM_ENABLED === 'true' &&
+    process.env.ISUN_STATIC_EXPORT === '1' || (mailConfig.CONTACT_FORM_ENABLED === 'true' &&
     ((!!mailConfig.GOOGLE_WORKSPACE_RELAY_URL && !!mailConfig.GOOGLE_WORKSPACE_RELAY_SECRET) ||
-      (!!mailConfig.RESEND_API_KEY && !!mailConfig.CONTACT_FROM_EMAIL));
+      (!!mailConfig.RESEND_API_KEY && !!mailConfig.CONTACT_FROM_EMAIL)));
   const t = translator(locale);
   const url = (p: string) => brandPath(p, locale);
   const intro: Record<string, [string, string]> = {
@@ -378,7 +378,7 @@ export function BrandContent({
             <p>
               <a href="mailto:admin@tideisun.com">admin@tideisun.com</a>
             </p>
-            <ContactForm locale={locale} labels={contactLabels(locale)} enabled={mailEnabled} />
+            <ContactForm locale={locale} labels={contactLabels(locale)} enabled={mailEnabled} endpoint={process.env.ISUN_STATIC_EXPORT === '1' ? 'https://isun1-enquiry.isunmedia.com/contact' : '/api/contact'} />
           </div>
           <aside>
             <img
