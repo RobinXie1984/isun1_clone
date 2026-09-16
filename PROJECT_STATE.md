@@ -1,6 +1,6 @@
 # iSun1 clone — living project state
 
-Updated 2026-09-16 12:36 Taipei time. Execution owner: Codex/Maimai. Intent/approval owner: Robin Xie. Launch deadline: September 18. Goal ACTIVE; remaining production verification and indexing follow-through in progress.
+Updated 2026-09-16 12:39 Taipei time. Execution owner: Codex/Maimai. Intent/approval owner: Robin Xie. Launch deadline: September 18. Goal BLOCKED pending existing admin-session access; website remains live. Google and Bing sitemap ingestion succeeded. Full closeout is not claimed.
 
 ## Current release
 
@@ -32,10 +32,14 @@ Updated 2026-09-16 12:36 Taipei time. Execution owner: Codex/Maimai. Intent/appr
 - Bing now reports sitemap **Success**, **832 discovered URLs**, zero sitemap errors/warnings and zero active/expired URL blocks. Canonical apex belongs to the existing property.
 - Production /global/ normal-DNS Mainland sample: 49 HTTP200, six403 all at cached former Sites IPs, ten DNS failures. New GitHub IPs succeeded across Telecom, Unicom and Mobile; propagation remains incomplete.
 
-## Next action
+## Next action after access is restored
 
-All 42 sampled production assets matched verified bytes. HTTP-to-HTTPS, www redirect, genuine404, public robots and llms Person ID checks passed. README, acceptance note and 23 bounded documentation/evidence files were checksum-verified on Studio; prior documents retained in a rollback folder. GitHub main documentation commit af27005cbfad26bc4c6cb68dd283a4167903bc11 is published. Remaining work: Both search engines have successfully ingested the sitemap. Local recursive DNS still resolves former Sites IPs with 1,030 seconds remaining TTL at 12:34; authoritative records and multiple Mainland carriers already reach GitHub. Recheck after this cache expires. Existing Safari admin access remains blocked by iMac lock (fresh check 12:35); pending unlock question remains the only Robin action. Complete the authorized mail integration once accessible. Direct-email contact remains available; do not claim automatic form delivery or universal propagation.
+Robin only needs to unlock the iMac; no password sharing, new permission or technical setup is requested. Use the existing Safari admin session to finish the already-authorized mail integration, keep secrets server-side, verify real accepted/rejected/rate-limited delivery, then enable the form. Recheck the normal-DNS production route and remaining Mainland cache results after propagation. Current direct-email contact remains available; automatic submissions are explicitly disabled.
+
+Independent work is preserved: production 112 routes and 42 sampled assets match the verified artifact; HTTP-to-HTTPS, www redirect, genuine404, public robots and llms Person ID pass. Deployment, README and acceptance evidence are checksum-mirrored on Studio and pushed to GitHub. Both search engines report sitemap Success with 832 URLs. Local resolver still had former Sites addresses with 784 seconds TTL at 12:38; do not claim universal cache convergence. No extra infrastructure, credentials or service grants were introduced to work around the locked session.
 
 ## Blocker audit
 
-Previous iSun1 goal turn made substantial progress (archive, build, deployment and acceptance). This continuation resolved Google and Bing sitemap ingestion. The same iMac-lock mail-access gate is verified in two consecutive iSun1 goal turns; the three-turn blocked threshold is not yet met. No repeated login request or new permission was introduced.
+The same iMac-lock/admin-Safari access blocker has now been freshly verified in three consecutive iSun1 goal turns. The first turn delivered archive/build/launch; the second resolved Google and Bing sitemap ingestion; this third turn rechecked live hosting, archive receipts, source HEAD and synchronized registry. No independent required implementation remains that can complete the mail journey without the existing authorized account session. Full completion remains unproven, so the goal is blocked rather than marked complete.
+
+Latest source audit: original approved source remains e55756bcd25bbe6beb8c453b4282288929502f7c. Original Studio registry, Studio clone and iMac clone all have SHA256 e07a0b7ad398a0072511a4f64c093df7f8075b60c28bb14836bbe0f4d383a821: unpublished, zero records. GitHub Pages remains built with approved apex/www certificate and HTTPS enforcement. Backup ZIP files and independent verification receipts remain present at the documented local archive location.
