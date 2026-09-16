@@ -1,6 +1,6 @@
 # iSun1 · 阳光卫视
 
-The independent, eight-language iSun1 media site is live at **https://isun1.com/**. Release date: 16 September 2026, ahead of the 18 September Taipei deadline. Production validation is recorded in `PROJECT_STATE.md`; DNS propagation and mail-form delivery are still being followed through. A published page is not a promise of universal Mainland connectivity or search-engine indexing.
+The independent, eight-language iSun1 media site is live at **https://isun1.com/**. Release date: 16 September 2026, ahead of the 18 September Taipei deadline. Production validation is recorded in `PROJECT_STATE.md`; DNS propagation and mail-form delivery are still being followed through; both search engines have successfully read the sitemap. A published page is not a promise of universal Mainland connectivity or search-engine indexing.
 
 ## Ownership and locations
 
@@ -57,7 +57,7 @@ Sites media v1 is retained as a fallback at https://isun1-suntv.robin10.chatgpt.
 - 112 GitHub preview routes passed locale, canonical and noindex checks. The same 112 production routes and 42 sampled assets matched the verified artifact byte-for-byte over strictly verified TLS.
 - Eight 320-pixel mobile homepages passed overflow and visible-image checks; Hebrew RTL verified. Global carousel controls, search, programme pagination and unpublished authorization lookup were exercised in a browser.
 - Mainland preview testing through `http.ping.pro` returned 55 HTTP200 results across 65 probes, including China Telecom, China Unicom and China Mobile; ten DNS failures remained. Initial production test showed cached former-host addresses at some nodes. Timestamped results and limitations are in local `evidence/`; this is sampled access evidence, not an all-network guarantee.
-- Google sitewide removal is canceled. Google and Bing received the new sitemap; Bing has zero active URL blocks. Google live inspection of `/robin/` reported “URL is available to Google” and “Page can be indexed”. Submission and eligibility do not guarantee indexing or ranking.
+- Google sitewide removal is canceled. Google and Bing both report sitemap Success with 832 discovered URLs; Bing has zero active URL blocks. Google live inspection of `/robin/` reported “URL is available to Google” and “Page can be indexed”. Submission and eligibility do not guarantee indexing or ranking.
 
 ## Build and deploy a maintenance release
 
@@ -108,7 +108,7 @@ The current contact route provides a clear direct-email path to `admin@tideisun.
 
 Technical follow-up, in priority order:
 
-1. Finish DNS-propagation and search-sitemap processing checks; distinguish actual failures from old cached addresses.
+1. Finish DNS-propagation checks; both search engines have now read the sitemap successfully. Monitor actual crawl/indexing outcomes without confusing discovery with ranking.
 2. Complete the authorized relay when existing admin access is available, test delivery and rejection/rate limits, then enable the form. Direct email remains available meanwhile.
 3. Before any public authorization records exist, integrate current signed verification/revocation and maintain one approved registry across editions.
 4. Add source-backed episode summaries in the remaining languages only after reviewing source material; re-enable indexing per completed page.

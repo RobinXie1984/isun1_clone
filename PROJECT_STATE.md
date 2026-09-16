@@ -1,6 +1,6 @@
 # iSun1 clone — living project state
 
-Updated 2026-09-16 12:31 Taipei time. Execution owner: Codex/Maimai. Intent/approval owner: Robin Xie. Launch deadline: September 18. Goal ACTIVE; remaining production verification and indexing follow-through in progress.
+Updated 2026-09-16 12:36 Taipei time. Execution owner: Codex/Maimai. Intent/approval owner: Robin Xie. Launch deadline: September 18. Goal ACTIVE; remaining production verification and indexing follow-through in progress.
 
 ## Current release
 
@@ -28,10 +28,14 @@ Updated 2026-09-16 12:31 Taipei time. Execution owner: Codex/Maimai. Intent/appr
 ## Search reopening
 
 - Google Search Console domain and www properties show Sep14 sitewide removal **Request canceled**, verified 12:13 Taipei.
-- https://isun1.com/sitemap.xml submitted to domain property; submission accepted, fetch status still Couldn't fetch at 12:25. Independent strict-TLS fetch returns valid XML, 832 canonical static URLs. Google live test at 12:18 confirms /robin/ available to Google and indexable; its indexing request was accepted into the priority crawl queue. Actual indexing remains external/UNKNOWN.
-- Bing reports zero active/expired URL blocks; canonical apex already belongs to the existing property. New sitemap submission accepted, Processing.
+- Google Search Console now reports sitemap **Success**, last read September 16, **832 discovered pages**. This resolves the initial fetch issue. The count matches the standalone production sitemap. Google live test at 12:18 confirms /robin/ available and indexable, and its indexing request was accepted. Discovery is not proof of indexing/ranking.
+- Bing now reports sitemap **Success**, **832 discovered URLs**, zero sitemap errors/warnings and zero active/expired URL blocks. Canonical apex belongs to the existing property.
 - Production /global/ normal-DNS Mainland sample: 49 HTTP200, six403 all at cached former Sites IPs, ten DNS failures. New GitHub IPs succeeded across Telecom, Unicom and Mobile; propagation remains incomplete.
 
 ## Next action
 
-All 42 sampled production assets matched verified bytes. HTTP-to-HTTPS, www redirect, genuine404, public robots and llms Person ID checks passed. README, acceptance note and 23 bounded documentation/evidence files were checksum-verified on Studio; prior documents retained in a rollback folder. GitHub main documentation commit af27005cbfad26bc4c6cb68dd283a4167903bc11 is published. Remaining work: Follow through after recursive DNS caches expire and Google retries its sitemap fetch. Existing Safari admin access is still blocked by iMac lock (fresh check 12:18); pending unlock question remains the only Robin action. Complete the authorized mail integration once accessible. Direct-email contact remains available; do not claim automatic form delivery or universal propagation.
+All 42 sampled production assets matched verified bytes. HTTP-to-HTTPS, www redirect, genuine404, public robots and llms Person ID checks passed. README, acceptance note and 23 bounded documentation/evidence files were checksum-verified on Studio; prior documents retained in a rollback folder. GitHub main documentation commit af27005cbfad26bc4c6cb68dd283a4167903bc11 is published. Remaining work: Both search engines have successfully ingested the sitemap. Local recursive DNS still resolves former Sites IPs with 1,030 seconds remaining TTL at 12:34; authoritative records and multiple Mainland carriers already reach GitHub. Recheck after this cache expires. Existing Safari admin access remains blocked by iMac lock (fresh check 12:35); pending unlock question remains the only Robin action. Complete the authorized mail integration once accessible. Direct-email contact remains available; do not claim automatic form delivery or universal propagation.
+
+## Blocker audit
+
+Previous iSun1 goal turn made substantial progress (archive, build, deployment and acceptance). This continuation resolved Google and Bing sitemap ingestion. The same iMac-lock mail-access gate is verified in two consecutive iSun1 goal turns; the three-turn blocked threshold is not yet met. No repeated login request or new permission was introduced.

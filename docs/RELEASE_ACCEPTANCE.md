@@ -17,14 +17,14 @@ Public artifact: `04268009c4b5ab8ca269997fe83846dc5ded3d75`
 | Mail DNS | Existing Google MX/SPF/DKIM preserved; Wix nameservers unchanged |
 | Mainland preview | 55/65 HTTPS responses200; Telecom/Unicom/Mobile represented; ten DNS failures retained |
 | Mainland production /global/ | 49/65 responses200; six403 at former Sites IPs still cached; ten DNS failures |
-| Google reopening | Old sitewide removal canceled; /robin/ live test says available and indexable; indexing request accepted |
-| Bing reopening | Zero active blocks; new sitemap submitted and Processing |
+| Google reopening | Old sitewide removal canceled; sitemap Success, 832 discovered pages; /robin/ live test indexable and indexing request accepted |
+| Bing reopening | Zero active blocks; sitemap Success, 832 discovered URLs; zero sitemap errors/warnings |
 | Authorization registry | Exact approved source; unpublished, zero records; static build fails if populated without live verification |
 
 ## Explicit remaining limits
 
 - DNS propagation is incomplete at some recursive resolvers. A successful carrier sample does not guarantee all networks or future availability.
-- Google accepted the sitemap submission but still displays an initial fetch error; direct verified requests return valid XML. Follow-through is pending; indexing/ranking are not guaranteed.
+- Both search engines have successfully read the sitemap. Discovery and accepted indexing requests do not guarantee indexing or ranking.
 - Contact's direct-email link works. Automatic form delivery is disabled and untested while the existing Safari admin session is inaccessible behind the iMac lock. No false delivery confirmation is shown.
 - Original YouTube videos may not play in Mainland China. The locally served website and images do not require YouTube.
 - The inherited 166 source-backed summaries retain their real language coverage; unfinished translations are labelled and unindexed.
